@@ -21,6 +21,25 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+      bootdev-cli = pkgs.buildGoModule rec {
+        pname = "bootdev";
+        version = "1.11.1";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "bootdotdev";
+          repo = "bootdev";
+          rev = "v${version}";
+          hash = "sha256-4XOXYcC+ghvyZ9oFg/kXn/1MdseMPIWzR4CFMVWrukw=";
+        };
+
+        vendorHash = "sha256-jhRoPXgfntDauInD+F7koCaJlX4XDj+jQSe/uEEYIMM=";
+
+        meta = {
+          description = "The official CLI for boot.dev";
+          homepage = "https://github.com/bootdotdev/bootdev";
+        };
+      };
     in
     {
       checks = {
@@ -41,10 +60,13 @@
         buildInputs = self.checks.pre-commit-check.enabledPackages;
 
         packages = with pkgs; [
+          just
+          kubectl
+          minikube
+          nil
           nixpkgs-fmt
           pre-commit
-          nil
-          kubectl
+          bootdev-cli
         ];
       };
     };
