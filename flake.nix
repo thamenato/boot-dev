@@ -60,13 +60,14 @@
         buildInputs = self.checks.pre-commit-check.enabledPackages;
 
         packages = with pkgs; [
+          bootdev-cli
           just
+          k9s
           kubectl
           minikube
           nil
           nixpkgs-fmt
           pre-commit
-          bootdev-cli
         ];
       };
     };
