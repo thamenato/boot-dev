@@ -6,8 +6,8 @@ course by boot.dev.
 ## Course Progress
 
 - [X] Ch 1: Install
-- [] Ch 2: Pods
-- [] Ch 3: Deployments
+- [X] Ch 2: Pods
+- [X] Ch 3: Deployments
 - [] Ch 4: ConfigMaps
 - [] Ch 5: Services
 - [] Ch 6: Ingress
