@@ -8,7 +8,7 @@ course by boot.dev.
 - [X] Ch 1: Install
 - [X] Ch 2: Pods
 - [X] Ch 3: Deployments
-- [] Ch 4: ConfigMaps
+- [X] Ch 4: ConfigMaps
 - [] Ch 5: Services
 - [] Ch 6: Ingress
 - [] Ch 7: Storage
