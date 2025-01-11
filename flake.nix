@@ -24,15 +24,18 @@
 
       bootdev-cli = pkgs.buildGoModule rec {
         pname = "bootdev";
-        version = "1.11.1";
+        version = "1.15.1";
 
         src = pkgs.fetchFromGitHub {
           owner = "bootdotdev";
           repo = "bootdev";
           rev = "v${version}";
-          hash = "sha256-4XOXYcC+ghvyZ9oFg/kXn/1MdseMPIWzR4CFMVWrukw=";
+          # To get hash use: `nix flake prefetch github:bootdotdev/bootdev/v<version>`
+          hash = "sha256-ofXMlH1cvhfCFmgjZVMqt/kF8F9ZlD2CPH55d7dkMN8=";
         };
 
+        # Use `pks.lib.fakeHash` the first time when building the module to get
+        # the value of the hash during a version update
         vendorHash = "sha256-jhRoPXgfntDauInD+F7koCaJlX4XDj+jQSe/uEEYIMM=";
 
         meta = {
