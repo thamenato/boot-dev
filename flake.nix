@@ -71,6 +71,7 @@
           nil
           nixpkgs-fmt
           pre-commit
+          uv
         ];
       };
     };
