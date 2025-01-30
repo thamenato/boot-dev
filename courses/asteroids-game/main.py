@@ -1,6 +1,7 @@
 import pygame
 
 from constants import *
+from player import Player
 
 
 def main():
@@ -15,8 +16,15 @@ def main():
     screen = pygame.display.set_mode(_window_size)
 
     clock = pygame.time.Clock()
+    dt = 0
+
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
 
     is_running = True
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while is_running:
         # poll for events
@@ -25,15 +33,21 @@ def main():
             if event.type == pygame.QUIT:
                 is_running = False
 
-        # fill the screen with a color to wipe away anything from last frame
+        for u in updatable:
+            u.update(dt)
+
         screen.fill("purple")
 
-        # RENDER YOUR GAME HERE
+        for d in drawable:
+            d.draw(screen)
+
+        # player.draw(screen)
+        # player.update(dt)
 
         # flip() the display to put your work on screen
         pygame.display.flip()
 
-        clock.tick(60)  # limits FPS to 60
+        dt = clock.tick(60) / 1000
 
     pygame.quit()
 
