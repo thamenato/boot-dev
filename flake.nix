@@ -1,5 +1,5 @@
 {
-  description = "K8s Learning Course";
+  description = "Boot.Dev Learning Courses";
 
   nixConfig = {
     extra-substituters = ["https://nix-community.cachix.org"];
@@ -45,6 +45,7 @@
         homepage = "https://github.com/bootdotdev/bootdev";
       };
     };
+    python = pkgs.python312.withPackages (ps: [ps.pygame]);
   in {
     checks = {
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -71,8 +72,7 @@
         minikube
         nil
         nixpkgs-fmt
-        pre-commit
-        uv
+        python
       ];
     };
   };
